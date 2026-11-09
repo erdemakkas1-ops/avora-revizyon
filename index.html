@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#ffffff">
+<meta name="description" content="AVORA Giyim — mevcut Shopify mağazası için formatı korunmuş tasarım revizyonu önizlemesi.">
+<title>AVORA Giyim | Revizyon Önizlemesi</title>
+<link rel="icon" href="assets/avora-logo.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip-link" href="#MainContent">İçeriğe atla</a>
+<div class="demo-ribbon" role="status"><span><b>ÖNİZLEME</b> · Mevcut mağaza formatı korunarak hazırlanmış tasarım revizyonu</span><button id="dismissDemo" aria-label="Önizleme bilgilendirmesini kapat">×</button></div>
+<div class="announcement"><span>AVORA GİYİM</span><span class="announcement-star" aria-hidden="true">✦</span><span>STYLE WITHOUT LIMITS</span></div>
+
+<header class="site-header" id="top">
+  <div class="header-side">
+    <button class="icon-btn" id="menuOpen" aria-label="Menüyü aç" aria-controls="menuDrawer" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"/></svg></button>
+    <button class="icon-btn" id="searchOpen" aria-label="Ara" aria-controls="searchDrawer" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.3"/><path d="m16 16 4.8 4.8"/></svg></button>
+  </div>
+  <a class="brand" href="#top" aria-label="AVORA Giyim ana sayfası"><img src="assets/avora-logo.webp" alt="AVORA Giyim" width="240" height="240"></a>
+  <div class="header-side right">
+    <button class="icon-btn" id="accountOpen" aria-label="Hesap"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.8"/><path d="M4.5 21v-2.2a7.5 7.5 0 0 1 15 0V21"/></svg></button>
+    <button class="icon-btn bag-btn" id="cartOpen" aria-label="Sepet" aria-controls="cartDrawer" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l1 12H4L5 8Zm4 0V6a3 3 0 0 1 6 0v2"/></svg><span id="cartCount" class="cart-count" hidden>0</span></button>
+  </div>
+</header>
+
+<main id="MainContent" tabindex="-1">
+<!-- Shopify: image-banner bölümü -->
+<section class="hero" aria-labelledby="heroTitle">
+  <div class="hero-inner">
+    <img class="hero-mark" src="assets/avora-mark.webp" alt="" width="230" height="224">
+    <h1 id="heroTitle">AVORA GİYİM FARKIYLA</h1>
+    <a class="btn btn-gold" href="#urunler">Tüm ürünleri keşfet</a>
+  </div>
+</section>
+
+<!-- Shopify: featured-collection bölümü -->
+<section class="products wrap" id="urunler" aria-labelledby="productsTitle">
+  <div class="section-heading">
+    <h2 id="productsTitle">Ürünler</h2>
+    <a class="text-link" href="https://www.avora.net.tr/collections/all" target="_blank" rel="noopener">Tümünü görüntüle <span aria-hidden="true">→</span></a>
+  </div>
+  <div class="product-grid" id="productGrid"></div>
+</section>
+
+<!-- Shopify: featured-product bölümü -->
+<section class="collection wrap" id="koleksiyon" aria-labelledby="collectionTitle">
+  <div class="section-heading">
+    <h2 id="collectionTitle">AVORA KOLEKSİYON</h2>
+  </div>
+  <article class="collection-feature reveal">
+    <button class="featured-image" data-open-product="mont" aria-label="Erkek Şişme Mont ürününü seç"><img src="assets/mont-detail.webp" alt="Lacivert erkek şişme mont" width="1080" height="1427" loading="lazy" decoding="async"></button>
+    <div class="feature-copy">
+      <h3>Erkek Şişme Mont – Sportif Şıklık ve Sıcak Konfor</h3>
+      <p class="feature-price">1.690,00 TL</p>
+      <p class="feature-desc">Tarzını yansıt, soğuk havalarda konforundan ödün verme.</p>
+      <div class="feature-actions">
+        <button class="btn btn-dark" data-open-product="mont">Seç</button>
+        <a class="text-link" href="https://www.avora.net.tr/collections/frontpage" target="_blank" rel="noopener">Tüm koleksiyonu keşfet <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </article>
+</section>
+
+<!-- Shopify: newsletter bölümü -->
+<section class="newsletter" id="bulten" aria-labelledby="newsletterTitle">
+  <div class="newsletter-inner wrap">
+    <div>
+      <h2 id="newsletterTitle">E-posta listemize katılın</h2>
+      <p>Yeni ürünler ve kampanyalardan ilk siz haberdar olun.</p>
+    </div>
+    <form id="newsletterForm" class="newsletter-form">
+      <label class="visually-hidden" for="newsletterEmail">E-posta adresiniz</label>
+      <div class="email-entry"><input type="email" id="newsletterEmail" placeholder="E-posta adresiniz" autocomplete="email" required><button type="submit">Kaydol</button></div>
+      <small id="newsletterMessage">Önizleme: bu form şu an kayıt göndermez.</small>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-row">
+    <div><span class="footer-logo">AVORA</span><small>STYLE WITHOUT LIMITS</small></div>
+    <nav aria-label="Alt menü"><a href="#urunler">Ürünler</a><a href="#koleksiyon">Koleksiyon</a><a href="https://www.instagram.com/avor.awear/" target="_blank" rel="noopener noreferrer">Instagram</a></nav>
+    <span class="footer-end">© 2026 AVORA Giyim</span>
+  </div>
+</footer>
+
+<div class="overlay" id="overlay" hidden></div>
+<aside class="drawer left" id="menuDrawer" role="dialog" aria-modal="true" aria-label="Menü" inert>
+  <div class="drawer-head"><span>Menü</span><button class="close-btn" data-close aria-label="Menüyü kapat">×</button></div>
+  <nav class="drawer-nav"><a href="#top">Ana sayfa</a><a href="#urunler">Ürünler</a><a href="#koleksiyon">AVORA Koleksiyon</a><a href="#bulten">E-posta listesi</a></nav>
+</aside>
+<aside class="drawer right" id="searchDrawer" role="dialog" aria-modal="true" aria-label="Ürün ara" inert>
+  <div class="drawer-head"><span>Ara</span><button class="close-btn" data-close aria-label="Aramayı kapat">×</button></div>
+  <div class="drawer-body">
+    <label class="visually-hidden" for="searchInput">Ürün ara</label>
+    <input class="search-input" id="searchInput" type="search" placeholder="Ürün ara" autocomplete="off">
+    <div id="searchResults" class="search-results" aria-live="polite"></div>
+  </div>
+</aside>
+<aside class="drawer right" id="cartDrawer" role="dialog" aria-modal="true" aria-label="Sepet" inert>
+  <div class="drawer-head"><span>Sepetiniz</span><button class="close-btn" data-close aria-label="Sepeti kapat">×</button></div>
+  <div id="cartItems" class="cart-items"></div>
+  <div class="cart-footer">
+    <div class="cart-sub"><span>Ara toplam</span><b id="cartTotal">0,00 TL</b></div>
+    <button class="btn btn-dark full" id="checkoutBtn">Ödeme</button>
+    <small>Önizleme sepeti: ürünler yalnızca bu sayfada tutulur. Gerçek sepet ve ödeme Shopify üzerinden çalışacaktır.</small>
+  </div>
+</aside>
+<aside class="drawer right detail-drawer" id="detailDrawer" role="dialog" aria-modal="true" aria-label="Ürün seçimi" inert>
+  <div class="drawer-head"><span>Ürün</span><button class="close-btn" data-close aria-label="Kapat">×</button></div>
+  <div id="productDetails"></div>
+</aside>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script src="app.js" defer></script>
+</body>
+</html>

@@ -321,3 +321,57 @@ main:focus{outline:none}
   .reveal,.reveal-title span{opacity:1;transform:none}
   .zoom img{transform:none}
 }
+
+
+/* ===== AVORA FINAL POLISH — ürün verileri ve görselleri değiştirilmedi ===== */
+::selection{background:#c3a462;color:#0f0e0d}
+.scene{background:linear-gradient(140deg,#f3efe8 0%,#efebe4 62%,#e8e0d5 100%)}
+.scene-sticky::before{content:"";position:absolute;inset:14px var(--gutter);border:1px solid rgba(15,14,13,.10);pointer-events:none;z-index:0}
+.scene-copy{border-left:2px solid var(--gold);padding-left:20px}
+.scene-copy::before{content:"AVORA / THE EDIT";display:block;margin-bottom:14px;font-size:10px;font-weight:600;letter-spacing:.24em;color:#716451}
+.scene-copy .btn{box-shadow:0 10px 24px rgba(15,14,13,.12)}
+.scene-tag{cursor:pointer}
+.scene-tag:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
+.section-head{border-top:1px solid var(--line);padding-top:24px}
+.campaign-head{border-top:1px solid #393630;padding-top:24px}
+.card-btn:focus-visible,.card-plus:focus-visible,.size-btn:focus-visible,.nav-product:focus-visible,.strip-item:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.card-plus{transition:background-color .25s,color .25s,transform .4s var(--ease),box-shadow .3s var(--ease)}
+.card-plus:hover{box-shadow:0 12px 30px rgba(15,14,13,.22)}
+.edit-index{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:76px;padding:0 var(--gutter);background:#0f0e0d;color:#efebe4;border-bottom:1px solid #282522}
+.edit-index-label{font-family:var(--display);font-size:19px;letter-spacing:.02em;white-space:nowrap}
+.edit-index nav{display:flex;justify-content:flex-end;align-items:center;gap:clamp(18px,4vw,62px)}
+.edit-index nav a{display:inline-flex;align-items:baseline;gap:9px;min-height:48px;padding:13px 0;font-size:12px;font-weight:500;letter-spacing:.06em;white-space:nowrap;transition:color .2s var(--ease)}
+.edit-index nav a span{color:#bda375;font-size:10px;letter-spacing:.15em}
+.edit-index nav a:hover,.edit-index nav a:focus-visible{color:#c3a462}
+@media (max-width:1100px){
+  .card-info{flex-wrap:wrap}
+  .card-price{font-size:14px}
+}
+@media (max-width:899px){
+  .scene-sticky::before{inset:10px}
+  .scene-copy{border-left:0;padding-left:0}
+  .scene-copy::before{margin-bottom:8px}
+  .edit-index{min-height:66px}
+  .edit-index-label{font-size:16px}
+  .edit-index nav{gap:18px}
+}
+@media (max-width:640px){
+  .scene-sticky{padding-top:18px;padding-bottom:22px}
+  .f-main{width:min(53vw,300px)}
+  .scene-copy{margin-top:16px}
+  .scene-copy::before{font-size:9px;letter-spacing:.18em}
+  .scene-tag{margin-top:16px;padding-top:12px}
+  .section-head{padding-top:18px}
+  .product-grid{gap:28px 12px}
+  .product-grid>:nth-child(2n){margin-top:0}
+  .edit-index{gap:8px;min-height:56px;padding:0 14px}
+  .edit-index-label{display:none}
+  .edit-index nav{display:flex;justify-content:space-between;gap:10px;width:100%}
+  .edit-index nav a{font-size:11px;min-height:44px;gap:5px}
+  .edit-index nav a span{font-size:10px}
+}
+@media (max-width:345px){
+  .edit-index nav a{font-size:10px;letter-spacing:0}
+  .edit-index nav a span{font-size:9px}
+  .scene h1{font-size:28px}
+}

@@ -37,21 +37,32 @@ const productUrl = p => `${STORE}/products/${p.handle}`;
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 
 /* Ürün kartı — Shopify card-product snippet'inin karşılığı */
+const variantSummary = p => p.option === 'Renk' ? `${p.variants.length} renk` : p.variants.map(v => v[1]).join(' · ');
 function card(p, i) {
   const [main, second] = p.images;
-  return `<article class="product-card reveal" style="--d:${i * 60}ms">
-    <a class="card-media" href="${productUrl(p)}" data-open-product="${p.key}" tabindex="-1" aria-hidden="true">
-      <img src="${img(main[0], 540)}" srcset="${srcset(main[0])}" sizes="(max-width:640px) 50vw, 33vw" alt="" width="${main[1]}" height="${main[2]}" loading="lazy" decoding="async">
-      ${second ? `<img class="alt" src="${img(second[0], 540)}" srcset="${srcset(second[0])}" sizes="(max-width:640px) 50vw, 33vw" alt="" width="${second[1]}" height="${second[2]}" loading="lazy" decoding="async">` : ''}
-    </a>
+  return `<article class="product-card reveal" style="--d:${i * 80}ms">
+    <div class="card-media">
+      <a href="${productUrl(p)}" data-open-product="${p.key}" tabindex="-1" aria-hidden="true">
+        <img src="${img(main[0], 540)}" srcset="${srcset(main[0])}" sizes="(max-width:640px) 50vw, 33vw" alt="" width="${main[1]}" height="${main[2]}" loading="lazy" decoding="async">
+        ${second ? `<img class="alt" src="${img(second[0], 540)}" srcset="${srcset(second[0])}" sizes="(max-width:640px) 50vw, 33vw" alt="" width="${second[1]}" height="${second[2]}" loading="lazy" decoding="async">` : ''}
+      </a>
+      <span class="card-no">${String(i + 1).padStart(2, '0')}</span>
+      <button class="card-plus" data-open-product="${p.key}" aria-label="${p.title} — hızlı incele"><span aria-hidden="true">+</span></button>
+    </div>
     <div class="card-info">
       <h3 class="card-title"><a href="${productUrl(p)}" data-open-product="${p.key}">${p.title}</a></h3>
       <p class="card-price">${money(p.price)}</p>
-      <button class="card-btn" data-open-product="${p.key}" aria-label="${p.title} — ${p.option.toLocaleLowerCase('tr')} seç">${p.option} seç</button>
     </div>
+    <p class="card-variants">${variantSummary(p)}</p>
+    <button class="card-btn" data-open-product="${p.key}" aria-label="${p.title} — ${p.option.toLocaleLowerCase('tr')} seç">${p.option} seç</button>
   </article>`;
 }
 $('#productGrid').innerHTML = CATALOG.map(card).join('');
+$('#productCount').textContent = CATALOG.length;
+
+/* Koleksiyon: şişme mont görselleri (mağazadaki gerçek ürün görselleri) */
+const MONT_GALLERY = ['047ec026-f8ab-493c-bf3e-9dfaac0029f9', '45b5972e-e069-464d-8aca-fdb31e021cb7', '46c7f03e-5e63-4ed5-bb90-95635bdc3c65', '679c4867-d496-407b-ae51-df60e6291007', '5535627b-e3cd-40b4-94bf-d6434a5ab331', 'cd6bbe8c-ee0d-463a-a6e4-7a8c8d369078'];
+$('#colorStrip').innerHTML = MONT_GALLERY.map((f, i) => `<button class="strip-item zoom" data-open-product="mont" aria-label="Erkek Şişme Mont — görsel ${i + 1}, renk seç"><img src="${img(f + '.jpg?v=1793908378', 420)}" alt="" width="1086" height="1448" loading="lazy" decoding="async"></button>`).join('');
 
 /* Menüdeki ürün listesi (mağazada tek koleksiyon olduğu için kategori uydurulmaz) */
 $('#navCount').textContent = CATALOG.length;
@@ -62,10 +73,28 @@ if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: re
   const io = new IntersectionObserver((entries, ob) => entries.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('visible'); ob.unobserve(e.target); }
   }), {threshold: .12, rootMargin: '0px 0px -40px 0px'});
-  $$('.reveal').forEach(el => io.observe(el));
+  $$('.reveal, .zoom, .reveal-title').forEach(el => io.observe(el));
 } else {
-  $$('.reveal').forEach(el => el.classList.add('visible'));
+  $$('.reveal, .zoom, .reveal-title').forEach(el => el.classList.add('visible'));
 }
+
+/* Hero sahnesi: kaydırma ilerlemesi tek bir CSS değişkenine (--p) yazılır; yalnızca transform/opacity değişir */
+const scene = $('#scene');
+const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+let sceneTick = false;
+function updateScene() {
+  sceneTick = false;
+  const r = scene.getBoundingClientRect();
+  const span = Math.max(1, r.height - innerHeight * (innerWidth >= 900 ? 1 : .35));
+  const p = Math.min(1, Math.max(0, -r.top / span));
+  scene.style.setProperty('--p', p.toFixed(3));
+}
+if (!reduce) {
+  addEventListener('scroll', () => { if (!sceneTick) { sceneTick = true; requestAnimationFrame(updateScene); } }, {passive: true});
+  addEventListener('resize', updateScene, {passive: true});
+  updateScene();
+}
+requestAnimationFrame(() => document.documentElement.classList.add('is-ready'));
 
 /* Çekmeceler */
 let activeDrawer = null, lastTrigger = null, toastTimer;

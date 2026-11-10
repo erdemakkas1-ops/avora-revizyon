@@ -1,9 +1,19 @@
-# AVORA Giyim — Mevcut site revizyonu (V5)
+# AVORA Giyim — Mevcut site revizyonu (V6)
 
 Bu klasör, **www.avora.net.tr** Shopify mağazasının görsel ve kullanıcı deneyimi revizyonu için hazırlanmış bir **önizlemedir**.
 Sıfırdan bir site değildir. Canlı mağazaya, temaya veya DNS kayıtlarına hiçbir değişiklik yapılmamıştır.
 
 V4, müşterinin onayladığı V2 kodunun üzerine kurulmuştur. Askılık konseptli V3 sürümü, mevcut formattan fazla uzaklaştığı için kullanılmamıştır.
+
+## V6 tasarım dili
+Müşterinin cevabı: "Mevcut siteyi koru ama özel farklı tasarım da olabilir." Buna göre:
+- **Korunanlar:** logo, header düzeni (menü/arama · logo · hesap/sepet), ürünler, fiyatlar, varyantlar, sepet ve Shopify ödeme yönlendirmesi, menü mantığı.
+- **Yenilenenler:**
+  - Tipografi: Bodoni Moda + Inter.
+  - Renkler: kırık beyaz ve siyah; altın yalnızca vurgu.
+  - Hero: dergi kapağı kompozisyonu. AVORA yazısı ürün fotoğrafının arkasından geçiyor; kaydırınca harfler ayrılıyor ve diğer iki ürün yanlara geliyor (masaüstünde sabitlenen 165vh sahne).
+  - Ürün kartları ve koyu zeminli koleksiyon kampanyası.
+- **Animasyonlar:** Kütüphane yok. Tek pasif scroll dinleyicisi `--p` değişkenini günceller; yalnızca transform ve opacity değişir. Mobilde sahne sabitlenmez. `prefers-reduced-motion` açıkken hareket kapanır.
 
 ## Korunan yapı (canlı siteyle aynı sıra)
 1. Duyuru çubuğu

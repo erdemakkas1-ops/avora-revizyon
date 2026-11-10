@@ -36,8 +36,9 @@ main:focus{outline:none}
 .btn-dark:hover{background:#000}
 .btn-outline{background:transparent;border-color:var(--ink);color:var(--ink)}
 .btn-outline:hover{background:var(--ink);color:#fff}
-.btn-gold{border-color:var(--gold);color:#fff;background:transparent}
-.btn-gold:hover{background:var(--gold);color:var(--black)}
+.btn-gold{border-color:var(--gold);background:var(--gold);color:#0b0b0b;font-weight:600}
+.btn-gold:hover{background:#d8bf86;border-color:#d8bf86}
+.btn.disabled{opacity:.45;pointer-events:none}
 .text-link{display:inline-flex;gap:6px;align-items:center;font-size:14px;color:var(--ink);border-bottom:1px solid currentColor;padding-bottom:2px;transition:color .2s}
 .text-link:hover{color:var(--gold-deep)}
 .text-link span{transition:transform .25s var(--ease)}
@@ -63,7 +64,7 @@ main:focus{outline:none}
 
 /* Hero — canlı sitedeki siyah/altın logo bannerı */
 .hero{background:#000;color:#fff;text-align:center}
-.hero-inner{min-height:clamp(440px,68vh,640px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px var(--gutter)}
+.hero-inner{min-height:clamp(420px,62vh,600px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:64px var(--gutter)}
 .hero-mark{width:clamp(150px,17vw,220px);height:auto;-webkit-mask-image:radial-gradient(closest-side,#000 60%,transparent 100%);mask-image:radial-gradient(closest-side,#000 60%,transparent 100%)}
 .hero h1{margin:28px 0 32px;font-size:clamp(22px,2.6vw,34px);font-weight:500;letter-spacing:.2em;line-height:1.3;color:#f3eee5}
 .hero-mark,.hero h1,.hero .btn{animation:rise .9s var(--ease) both}
@@ -79,19 +80,24 @@ main:focus{outline:none}
 .products{padding:clamp(56px,8vw,96px) 0 clamp(48px,7vw,88px);scroll-margin-top:80px}
 .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px 20px}
 .product-card{min-width:0}
-.card-media{position:relative;aspect-ratio:3/4;background:var(--soft);overflow:hidden}
-.card-media>a{display:block;height:100%}
-.card-media img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .7s var(--ease)}
-.product-card:hover .card-media img{transform:scale(1.035)}
-.quick-add{position:absolute;right:12px;bottom:12px;min-width:64px;height:40px;padding:0 16px;border:0;background:rgba(255,255,255,.94);color:var(--ink);font-size:13px;font-weight:500;letter-spacing:.04em;box-shadow:0 1px 3px rgba(0,0,0,.08);transition:background-color .2s,color .2s,transform .35s var(--ease)}
-.quick-add:hover{background:var(--ink);color:#fff}
-.card-title{margin:14px 0 6px;font-size:15px;font-weight:500;line-height:1.45;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-media{position:relative;display:block;aspect-ratio:3/4;background:var(--soft);overflow:hidden}
+.card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .7s var(--ease),opacity .45s ease}
+.card-media .alt{opacity:0}
+@media (hover:hover){
+  .product-card:hover .card-media img{transform:scale(1.03)}
+  .product-card:hover .card-media .alt{opacity:1}
+}
+.card-info{display:flex;flex-direction:column;flex:1}
+.product-card{display:flex;flex-direction:column}
+.card-btn{margin-top:auto;height:44px;border:1px solid var(--ink);background:#fff;color:var(--ink);font-size:13px;font-weight:500;letter-spacing:.04em;transition:background-color .2s,color .2s}
+.card-btn:hover{background:var(--ink);color:#fff}
+.card-title{margin:14px 0 6px;min-height:2.9em;font-size:15px;font-weight:500;line-height:1.45;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .card-title a:hover{text-decoration:underline;text-underline-offset:3px}
-.card-price{margin:0;font-size:15px;color:var(--text);font-variant-numeric:tabular-nums}
+.card-price{margin:0 0 14px;font-size:15px;font-weight:600;color:var(--text);font-variant-numeric:tabular-nums}
 
 /* Koleksiyon / öne çıkan ürün */
 .collection{padding-bottom:clamp(56px,8vw,104px);scroll-margin-top:80px}
-.collection-feature{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
+.collection-feature{display:grid;grid-template-columns:minmax(0,440px) minmax(0,1fr);gap:clamp(28px,5vw,72px);align-items:center}
 .featured-image{display:block;border:0;padding:0;background:var(--soft);aspect-ratio:4/5;overflow:hidden;width:100%}
 .featured-image img{width:100%;height:100%;object-fit:cover;object-position:center 22%;transition:transform .8s var(--ease)}
 .featured-image:hover img{transform:scale(1.03)}
@@ -127,7 +133,7 @@ main:focus{outline:none}
 /* Çekmeceler */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:24;animation:fade .3s ease}
 @keyframes fade{from{opacity:0}}
-.drawer{position:fixed;top:0;bottom:0;width:min(420px,100%);background:#fff;z-index:25;overflow-y:auto;display:flex;flex-direction:column;visibility:hidden;transition:transform .42s var(--ease),visibility .42s}
+.drawer{position:fixed;top:0;bottom:0;width:min(420px,100%);will-change:transform;background:#fff;z-index:25;overflow-y:auto;display:flex;flex-direction:column;visibility:hidden;transition:transform .38s var(--ease),visibility .38s}
 .drawer.left{left:0;transform:translateX(-100%)}
 .drawer.right{right:0;transform:translateX(100%)}
 .drawer.open{transform:none;visibility:visible}
@@ -136,7 +142,20 @@ main:focus{outline:none}
 .close-btn:hover{background:var(--soft)}
 .drawer-body{padding:20px 24px}
 .drawer-nav{display:flex;flex-direction:column;padding:8px 24px}
-.drawer-nav a{padding:18px 0;font-size:20px;border-bottom:1px solid var(--line);color:var(--ink)}
+.drawer-nav>a{display:flex;align-items:center;justify-content:space-between;padding:17px 0;font-size:19px;border-bottom:1px solid var(--line);color:var(--ink)}
+.nav-count{font-size:12px;color:var(--muted)}
+.nav-products{display:flex;flex-direction:column;padding:6px 0 10px;border-bottom:1px solid var(--line)}
+.nav-product{display:flex;align-items:center;gap:12px;min-height:56px;border:0;background:none;padding:6px 0;text-align:left;font-size:14px;line-height:1.35;color:var(--text)}
+.nav-product img{width:40px;height:53px;object-fit:cover;object-position:top;flex:none;background:var(--soft)}
+.nav-product:hover{color:var(--ink);text-decoration:underline;text-underline-offset:3px}
+.drawer-foot{margin-top:auto;display:flex;flex-direction:column;gap:2px;padding:20px 24px 28px;font-size:14px;color:var(--muted)}
+.drawer-foot a{padding:8px 0}
+.drawer-foot a:hover{color:var(--ink)}
+.drawer.open .drawer-nav>*{animation:navIn .45s var(--ease) both}
+.drawer.open .drawer-nav>:nth-child(2){animation-delay:.04s}
+.drawer.open .drawer-nav>:nth-child(3){animation-delay:.08s}
+.drawer.open .drawer-nav>:nth-child(4){animation-delay:.12s}
+@keyframes navIn{from{opacity:0;transform:translateX(-10px)}}
 .search-input{width:100%;height:50px;border:1px solid #cfcac2;padding:0 16px;font-size:16px;outline:0}
 .search-input:focus{border-color:var(--ink)}
 .results-label{margin:22px 0 4px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
@@ -179,7 +198,7 @@ main:focus{outline:none}
 .reveal.visible{opacity:1;transform:none}
 
 /* Dokunmatik cihazlar: hover efekti yok */
-@media (hover:none){.product-card:hover .card-media img,.featured-image:hover img{transform:none}}
+@media (hover:none){.featured-image:hover img{transform:none}}
 
 /* Tablet */
 @media (max-width:900px){
@@ -190,23 +209,23 @@ main:focus{outline:none}
 
 /* Mobil — kartlar kaydırılabilir sıra, büyük dokunma alanları */
 @media (max-width:640px){
+  .products{padding-top:40px}
   body{font-size:15px}
   .demo-ribbon{font-size:11px;line-height:1.35;justify-content:flex-start;text-align:left;padding:6px 44px 6px 14px}
   .announcement{min-height:30px;font-size:10px;gap:10px;letter-spacing:.18em}
   .site-header{min-height:62px}
   .brand img{width:44px;height:44px}
   .header-side{gap:0}
-  .hero-inner{min-height:clamp(380px,62svh,520px);padding:48px 20px}
-  .hero h1{font-size:20px;letter-spacing:.16em;margin:22px 0 26px}
-  .hero .btn{width:100%;max-width:300px}
+  .hero-inner{min-height:0;padding:36px 20px 40px}
+  .hero-mark{width:118px}
+  .hero h1{font-size:17px;letter-spacing:.18em;margin:16px 0 22px}
+  .hero .btn{width:100%;max-width:280px;min-height:50px}
   .section-heading{margin-bottom:20px}
   .section-heading .text-link{font-size:13px}
-  .product-grid{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-left:var(--gutter);margin-inline:calc(-1*var(--gutter));padding:0 var(--gutter) 6px;scrollbar-width:none}
-  .product-grid::-webkit-scrollbar{display:none}
-  .product-card{flex:0 0 74%;scroll-snap-align:start}
-  .quick-add{right:10px;bottom:10px;height:40px}
-  .card-title{font-size:14px;margin-top:12px}
-  .card-price{font-size:14px}
+  .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 12px}
+  .card-title{font-size:13px;line-height:1.4;margin:10px 0 4px;min-height:2.8em}
+  .card-price{font-size:14px;margin-bottom:10px}
+  .card-btn{height:42px;font-size:12px;letter-spacing:.02em}
   .feature-actions{flex-direction:column;align-items:stretch}
   .feature-actions .text-link{align-self:center}
   .footer-row{grid-template-columns:1fr;gap:20px}

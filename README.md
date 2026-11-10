@@ -1,4 +1,4 @@
-# AVORA Giyim — Mevcut site revizyonu (V4)
+# AVORA Giyim — Mevcut site revizyonu (V5)
 
 Bu klasör, **www.avora.net.tr** Shopify mağazasının görsel ve kullanıcı deneyimi revizyonu için hazırlanmış bir **önizlemedir**.
 Sıfırdan bir site değildir. Canlı mağazaya, temaya veya DNS kayıtlarına hiçbir değişiklik yapılmamıştır.
@@ -17,12 +17,26 @@ V4, müşterinin onayladığı V2 kodunun üzerine kurulmuştur. Askılık konse
 ## Önizlemede çalışan / çalışmayan
 | Özellik | Durum |
 |---|---|
-| Menü, arama, sepet ve ürün çekmeceleri | Arayüz çalışır |
-| Arama | Yalnızca bu sayfadaki 3 ürün içinde arar. Shopify'da tema araması kullanılacak |
-| Sepet | Yalnızca tarayıcı belleğinde tutulur. Gerçek sepet ve ödeme Shopify'dadır |
-| Bedenler (S–XL) | **Örnek**. Gerçek bedenler Shopify varyantlarından gelecek |
-| Hesap, ödeme, e-posta kaydı | Önizlemede kapalı; canlı sitede Shopify ile çalışır |
-| "Tümünü görüntüle", "Tüm koleksiyonu keşfet", "Ürün sayfasını aç" | Canlı mağazadaki gerçek sayfalara gider |
+| Ürün verisi | Canlı mağazanın `/products.json` kopyası (10.11.2026): gerçek ID'ler, fiyatlar, varyantlar, görseller |
+| Görseller | Mağazanın kendi Shopify CDN'inden yüklenir |
+| Hızlı seçim | Gerçek varyantlar: rüzgarlık ve sweatshirt için S–XXL, mont için 7 renk |
+| Sepet | Tarayıcı belleğinde tutulur. "Ödemeye geç" canlı mağazada **gerçek** Shopify sepetini açar |
+| Arama | Mağazadaki 3 ürünün tamamında arar. Shopify'da Predictive Search kullanılacak |
+| Menü | Ana sayfa, Tüm ürünler (3 ürün listesiyle), AVORA Koleksiyon. Mağazada başka koleksiyon olmadığı için kategori eklenmedi |
+| Hesap, gizlilik politikası | Canlı mağazadaki gerçek sayfalara gider |
+| E-posta kaydı | Önizlemede kapalı |
+| Stok | Kopyalandığı andaki durum. Canlı stok kontrolü yok |
+
+Teknik plan için `SHOPIFY.md` dosyasına bakın.
+
+## Görsel kullanım hakkı (rapor)
+Mağazadaki ürün görselleri değiştirilmeden kullanılmıştır:
+- **Rüzgarlık:** Başka marka içermiyor.
+- **Mont:** 11 görselin tamamında Lacoste ya da Puma reklam düzeni ve logosu var.
+- **Sweatshirt:** Görsellerde ZARA yazısı var.
+
+Bu görsellerin kullanım hakkı belirsizdir; logolar düzenlenmedi ya da silinmedi.
+Önerilen çözüm, AVORA'nın kendi çekimleri ya da tedarikçiden markasız ürün fotoğrafı almaktır. Kompozisyon için önerim: düz açık gri fon, aynı ışık, 3:4 oran, ön ve arka görünüm.
 
 ## Shopify'a uygulama
 - İşlemi canlı temanın **kopyası** (Online Mağaza → Temalar → Çoğalt) üzerinde yapın. Önizleme bağlantısıyla müşteri onayı aldıktan sonra yayınlayın.
@@ -43,7 +57,8 @@ V4, müşterinin onayladığı V2 kodunun üzerine kurulmuştur. Askılık konse
 ## Müşteriye önerilen içerik düzeltmeleri (Shopify yöneticisinden)
 - Hero butonu canlıda İngilizce ("Shop all"). Önerilen metin: "Tüm ürünleri keşfet".
 - Mont başlığına açıklama metni karışmış ("…KonforTarzını yansıt…"). Başlık kısaltılmalı, cümle açıklamaya taşınmalı.
-- Sweatshirt başlığının sonunda ", M" var. Beden varyant olarak tanımlanmalı.
+- Sweatshirt başlığının sonundaki ", M" kaldırılmalı (bedenler zaten varyant olarak tanımlı).
+- Varyant adı "Xxl" yerine "XXL" yazılmalı (önizlemede XXL gösteriliyor).
 - Fiyatlar canlıda "1,690.00TL" biçiminde görünüyor. Türkçe biçim önerilir: "1.690,00 TL".
 - Ürün görsellerinde Lacoste ve ZARA logoları var. Kendi ürün fotoğraflarıyla değiştirilmesi önerilir.
 

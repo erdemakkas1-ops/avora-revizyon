@@ -94,8 +94,6 @@ if (!reduce) {
   addEventListener('resize', updateScene, {passive: true});
   updateScene();
 }
-/* Giriş animasyonu: rAF arka plan sekmelerinde çalışmayabilir, bu yüzden zamanlayıcıyla garanti edilir */
-setTimeout(() => document.documentElement.classList.add('is-ready'), 30);
 
 /* Çekmeceler */
 let activeDrawer = null, lastTrigger = null, toastTimer;
